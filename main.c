@@ -4,6 +4,7 @@
 #include "defines.h"
 #include "disciplinasMetodos.h"
 #include "periodosMetodos.h"
+#include "disciplinaPeriodoMetodos.h"
 
 void main(){
     
