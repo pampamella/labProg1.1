@@ -29,8 +29,8 @@ typedef struct alunos{
 }Alunos;
 
 typedef struct periodos{
-    char descricao[10];
     int codigo;
+    char descricao[10];
     struct periodos *anterior;
     struct periodos *proximo;
 }Periodos;
