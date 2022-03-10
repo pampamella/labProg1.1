@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <defines.h>
 
-Disciplinas *buscarDiscEndereco(Disciplinas *inicio, int valor){
+Periodos *buscarPeriodoEndereco(Periodos *inicio, int valor){
     while(inicio){
         if(valor==inicio->codigo){
             return inicio;
@@ -12,25 +12,23 @@ Disciplinas *buscarDiscEndereco(Disciplinas *inicio, int valor){
     return NULL;
 }
 
-void inserirDisciplina(Disciplinas **pInicio, int codigo, char *nome, char *professor, int creditos){
-    if(buscarDiscEndereco(*pInicio, codigo)){
-        printf("\nDisciplina ja cadastrada");
+void inserirPeriodo(Periodos **pInicio, int codigo, char *descricao){
+    if(buscarPeriodoEndereco(*pInicio, codigo)){
+        printf("\n Periodo ja cadastrado");
     }
     else{
-        Disciplinas *novoElemento =(Disciplinas*)malloc(sizeof(Disciplinas));
+        Periodos *novoElemento =(Periodos*)malloc(sizeof(Periodos));
         novoElemento->codigo=codigo;
-        strcpy(novoElemento->nome, nome);
-        strcpy(novoElemento->professor, professor);
-        novoElemento->creditos=creditos;
+        strcpy(novoElemento->descricao, descricao);
         novoElemento->proximo=*pInicio;
         *pInicio = novoElemento;
     }
 }
 
-void removerDisciplina(Disciplinas **pInicio, int valor){
-    Disciplinas *endereco = buscarDiscEndereco(*pInicio, valor);
+void removerPeriodo(Periodos **pInicio, int valor){
+    Periodos *endereco = buscarPeriodoEndereco(*pInicio, valor);
     if(endereco){
-        Disciplinas *aux = *pInicio, *anterior = NULL;
+        Periodos *aux = *pInicio, *anterior = NULL;
         while(aux){
             if(valor == aux-> codigo){
                 break;
@@ -49,6 +47,6 @@ void removerDisciplina(Disciplinas **pInicio, int valor){
         }
     }
     else {
-        printf("\nDisciplina nao existe");
+        printf("\n Periodo nao existe");
     }
 }
