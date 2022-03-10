@@ -1,8 +1,10 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "escreverDisciplinas.h"
 #include "disciplinasMetodos.h"
+
 
 void main(){
     Disciplinas *lista = NULL;
