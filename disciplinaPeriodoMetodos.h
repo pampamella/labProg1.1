@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include <defines.h>
+#include "disciplinasMetodos.h"
 
 listaDiscPer *buscarDiscPerEndereco(listaDiscPer *inicio, int valor){
     while(inicio){

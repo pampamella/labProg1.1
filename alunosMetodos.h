@@ -1,8 +1,8 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include "periodosMetodos.h"
+#include "disciplinaPeriodoMetodos.h"
 
-Disciplinas *buscarDiscEndereco(Disciplinas *inicio, int valor){
+Alunos *buscarAlunoEndereco(Alunos *inicio, int valor){
     while(inicio){
         if(valor==inicio->codigo){
             return inicio;
@@ -12,31 +12,31 @@ Disciplinas *buscarDiscEndereco(Disciplinas *inicio, int valor){
     return NULL;
 }
 
-void inserirDisciplina(Disciplinas **pInicio, int codigo, char *nome, char *professor, int creditos){
-    if(buscarDiscEndereco(*pInicio, codigo)){
-        printf("\nDisciplina ja cadastrada");
+void inserirAluno(Alunos **pInicio, int codigo, char *nome, float cpf, listaDiscPer *listaDiscPer){
+    if(buscarAlunoEndereco(*pInicio, codigo)){
+        printf("\n Aluno ja cadastrado");
     }
     else{
-        Disciplinas *novoElemento =(Disciplinas*)malloc(sizeof(Disciplinas));
+        Alunos *novoElemento =(Alunos*)malloc(sizeof(Alunos));
         novoElemento->codigo=codigo;
         strcpy(novoElemento->nome, nome);
-        strcpy(novoElemento->professor, professor);
-        novoElemento->creditos=creditos;
+        novoElemento->cpf=cpf;
+        novoElemento->lista=listaDiscPer;
         novoElemento->proximo=*pInicio;
         *pInicio = novoElemento;
     }
 }
 
-void removerDisciplina(Disciplinas **pInicio, int valor){
-    Disciplinas *endereco = buscarDiscEndereco(*pInicio, valor);
+void removerAluno(Alunos **pInicio, int valor){
+    Alunos *endereco = buscarAlunoEndereco(*pInicio, valor);
     if(endereco){
-        Disciplinas *aux = *pInicio, *anterior = NULL;
+        Alunos *aux = *pInicio, *anterior = NULL;
         while(aux){
             if(valor == aux-> codigo){
                 break;
             }
             anterior=aux;
-            aux= aux-> proximo;  
+            aux = aux-> proximo;  
         }
         if(aux) {
             if(anterior){
@@ -49,6 +49,6 @@ void removerDisciplina(Disciplinas **pInicio, int valor){
         }
     }
     else {
-        printf("\nDisciplina nao existe");
+        printf("\n Aluno nao existe");
     }
 }
