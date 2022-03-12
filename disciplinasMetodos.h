@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include <defines.h>
+#include "defines.h"
+
 
 Disciplinas *buscarDiscEndereco(Disciplinas *inicio, int valor){
     while(inicio){
@@ -52,3 +53,63 @@ void removerDisciplina(Disciplinas **pInicio, int valor){
         printf("\nDisciplina nao existe");
     }
 }
+
+Disciplinas *lerDisciplinas(){
+    FILE *arquivo;
+    arquivo = fopen("disciplinas.txt","r");
+    int codigo;
+    char nome[50];
+    char professor[50];
+    int credito;
+    char identificador;
+    Disciplinas *lista = NULL;
+    while(!feof(arquivo)){
+        fscanf(arquivo,"%d\n %s\n %s\n %d\n %c\n",&codigo,&nome,&professor,&credito,&identificador);
+        if(strcmp(&identificador,"*")){};
+        inserirDisciplina(&lista,codigo,nome,professor,credito);
+    }
+    fclose(arquivo);
+    return lista;
+}
+
+int escreverDisciplinas(Disciplinas **lista){
+    FILE *arquivo;
+    Disciplinas *aux = *lista;
+    arquivo = fopen("disciplinas.txt","w");
+    if(!arquivo){
+        printf("Erro de leitura");
+        return 0;
+    }
+    while(aux){
+        fprintf(arquivo,"%d",aux->codigo);
+        fputs("\n",arquivo);
+        fputs(aux->nome,arquivo);
+        fputs("\n",arquivo);
+        fputs(aux->professor,arquivo);
+        fputs("\n",arquivo);
+        fprintf(arquivo,"%d",aux->creditos);
+        fputs("\n",arquivo);
+        fprintf(arquivo,"%c",'x');
+        fputs("\n",arquivo);
+        aux = aux->proximo;
+    }
+    fclose(arquivo);
+    free(aux);
+    return 1;
+}
+
+void printDisciplinas(Disciplinas **lista){
+    int i = 1;
+    Disciplinas *aux = *lista;
+    while(aux){
+        printf("No: %d \n",i);
+        printf("Codigo: %d\n",aux->codigo);
+        printf("Nome: %s \n",aux->nome);
+        printf("Professor: %s \n",aux->professor);
+        printf("Creditos: %d \n",aux->creditos);
+        i++;
+        aux = (aux)->proximo;
+    }
+    free(aux);
+}
+
