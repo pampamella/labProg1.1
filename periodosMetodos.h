@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include <defines.h>
+#include "defines.h"
 
 Periodos *buscarPeriodoEndereco(Periodos *inicio, int valor){
     while(inicio){
@@ -49,4 +49,26 @@ void removerPeriodo(Periodos **pInicio, int valor){
     else {
         printf("\n Periodo nao existe");
     }
+}
+
+int escreverPeriodos(Periodos **lista){
+    FILE *arquivo;
+    Periodos *aux = *lista;
+    arquivo = fopen("periodos.txt","w");
+    if(!arquivo){
+        printf("Erro de leitura");
+        return 0;
+    }
+    while(aux){
+        printf("a");
+        fprintf(arquivo,"%d",aux->codigo);
+        fputs("\n",arquivo);
+        fputs(aux->descricao,arquivo);
+        fputs("\n",arquivo);
+        fprintf(arquivo,"%c",'x');
+        fputs("\n",arquivo);
+        aux = aux->proximo;
+    }
+    fclose(arquivo);
+    return 1;
 }
