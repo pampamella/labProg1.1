@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include "disciplinasMetodos.h"
+#include "alunosMetodos.h"
+
 
 void main(){
     Disciplinas *lista = NULL;
@@ -12,6 +14,10 @@ void main(){
     escreverDisciplinas(&lista);
     listaLeitura = lerDisciplinas();
     printDisciplinas(&listaLeitura);
+    Periodos *periodos=NULL;
+    inserirPeriodo(&periodos, 1, "2018.2");
+    inserirPeriodo(&periodos, 2, "2019.1");
+    escreverPeriodos(&periodos);
 }
 
 
