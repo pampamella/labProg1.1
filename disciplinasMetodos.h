@@ -88,7 +88,7 @@ int escreverDisciplinas(Disciplinas **lista){
         fputs("\n",arquivo);
         fprintf(arquivo,"%d",aux->creditos);
         fputs("\n",arquivo);
-        fprintf(arquivo,"%c",'x');
+        fprintf(arquivo,"%c",'*');
         fputs("\n",arquivo);
         aux = aux->proximo;
     }
