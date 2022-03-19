@@ -2,14 +2,14 @@
 fentrans
 gabriel
 17
-x
+*
 10001
 sistdig
 rotava
 41
-x
+*
 10000
 matdisc
 veloso
 20
-x
+*
