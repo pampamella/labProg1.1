@@ -1,6 +1,5 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include "defines.h"
 #include "periodosMetodos.h"
 
 Disciplinas *buscarDiscEndereco(Disciplinas *inicio, int valor){
