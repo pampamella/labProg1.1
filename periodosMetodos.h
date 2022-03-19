@@ -51,6 +51,22 @@ void removerPeriodo(Periodos **pInicio, int valor){
     }
 }
 
+Periodos *lerPeriodos(){
+    FILE *arquivo;
+    arquivo = fopen("periodos.txt","r");
+    int codigo;
+    char descricao[10];
+    char identificador;
+    Periodos *lista = NULL;
+    while(!feof(arquivo)){
+        fscanf(arquivo,"%d\n %s\n %c\n",&codigo,&descricao, &identificador);
+        if(strcmp(&identificador,"*")){};
+        inserirPeriodo(&lista,codigo,descricao);
+    }
+    fclose(arquivo);
+    return lista;
+}
+
 int escreverPeriodos(Periodos **lista){
     FILE *arquivo;
     Periodos *aux = *lista;
@@ -60,15 +76,27 @@ int escreverPeriodos(Periodos **lista){
         return 0;
     }
     while(aux){
-        printf("a");
         fprintf(arquivo,"%d",aux->codigo);
         fputs("\n",arquivo);
         fputs(aux->descricao,arquivo);
         fputs("\n",arquivo);
-        fprintf(arquivo,"%c",'x');
+        fprintf(arquivo,"%c",'*');
         fputs("\n",arquivo);
         aux = aux->proximo;
     }
     fclose(arquivo);
     return 1;
+}
+
+void printPeriodos(Periodos **lista){
+    int i = 1;
+    Periodos *aux = *lista;
+    while(aux){
+        printf("No: %d \n",i);
+        printf("Codigo: %d\n",aux->codigo);
+        printf("Descricao: %s \n",aux->descricao);
+        i++;
+        aux = (aux)->proximo;
+    }
+    free(aux);
 }
