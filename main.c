@@ -16,7 +16,11 @@ void main(){
     Periodos *periodos=NULL;
     inserirPeriodo(&periodos, 1, "2018.2");
     inserirPeriodo(&periodos, 2, "2019.1");
+    inserirPeriodo(&periodos, 3, "2019.2");
     escreverPeriodos(&periodos);
+    Periodos *listaPeriodos;
+    listaPeriodos = lerPeriodos();
+    printPeriodos(&listaPeriodos);
 }
 
 
