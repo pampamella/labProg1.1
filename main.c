@@ -29,6 +29,7 @@ void main(){
     inserirDiscPer(&disciplinasPeriodos, 10001, 2);
     printf("\n---------Filtro por Periodo -----------\n");
     disciplinasPorPeriodo(disciplinasPeriodos, 2, &disciplinasSalvas);
+
 }
 
 

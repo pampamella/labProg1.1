@@ -12,7 +12,7 @@ Alunos *buscarAlunoEndereco(Alunos *inicio, int valor){
     return NULL;
 }
 
-void inserirAluno(Alunos **pInicio, int codigo, char *nome, float cpf, listaDiscPer *listaDiscPer){
+void inserirAluno(Alunos **pInicio, int codigo, char *nome, char *cpf, listaDiscPer *listaDiscPer){
     if(buscarAlunoEndereco(*pInicio, codigo)){
         printf("\n Aluno ja cadastrado");
     }
@@ -20,7 +20,7 @@ void inserirAluno(Alunos **pInicio, int codigo, char *nome, float cpf, listaDisc
         Alunos *novoElemento =(Alunos*)malloc(sizeof(Alunos));
         novoElemento->codigo=codigo;
         strcpy(novoElemento->nome, nome);
-        novoElemento->cpf=cpf;
+        strcpy(novoElemento->cpf, cpf);
         novoElemento->lista=listaDiscPer;
         novoElemento->proximo=*pInicio;
         *pInicio = novoElemento;
@@ -51,4 +51,29 @@ void removerAluno(Alunos **pInicio, int valor){
     else {
         printf("\n Aluno nao existe");
     }
+}
+
+int escreverAlunos(Alunos **lista){
+    FILE *arquivo;
+    Alunos *aux = *lista;
+    arquivo = fopen("alunos.txt","w");
+    if(!arquivo){
+        printf("Erro de leitura");
+        return 0;
+    }
+    while(aux){
+        fprintf(arquivo,"%d",aux->codigo);
+        fputs("\n",arquivo);
+        fputs(aux->nome,arquivo);
+        fputs("\n",arquivo);
+        fputs(aux->cpf,arquivo);
+        fputs("\n",arquivo);
+        escreverDiscPer(*(aux->lista),arquivo);
+        fprintf(arquivo,"%c",'*');
+        fputs("\n",arquivo);
+        aux = aux->proximo;
+    }
+    fclose(arquivo);
+    free(aux);
+    return 1;
 }

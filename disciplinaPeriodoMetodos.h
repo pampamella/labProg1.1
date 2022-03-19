@@ -50,3 +50,18 @@ void removerDiscPer(listaDiscPer **pInicio, int valor){
         printf("\nO par Disciplina-Periodo  nao existe");
     }
 }
+
+void escreverDiscPer(listaDiscPer lista, FILE *arquivo){
+    listaDiscPer *aux = &lista;
+    fprintf(arquivo,"%c",'~');
+    fputs("\n",arquivo);
+    while(aux){
+        fprintf(arquivo,"%d",aux->codigoDisciplina);
+        fputs("\n",arquivo);
+        fprintf(arquivo,"%d",aux->codigoPeriodo);
+        fputs("\n",arquivo);
+        fprintf(arquivo,"%c",'-');
+        fputs("\n",arquivo);
+        aux = aux->proximo;
+    }        
+}
