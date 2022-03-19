@@ -60,7 +60,6 @@ int escreverPeriodos(Periodos **lista){
         return 0;
     }
     while(aux){
-        printf("a");
         fprintf(arquivo,"%d",aux->codigo);
         fputs("\n",arquivo);
         fputs(aux->descricao,arquivo);
