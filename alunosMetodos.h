@@ -128,3 +128,8 @@ void inserirDisciplinaAluno(Alunos **listaAlunos,int codigoAluno, int codigoDisc
     Alunos *auxAluno = buscarAlunoEndereco(*listaAlunos,codigoAluno);
     inserirDiscPer(&(auxAluno->lista),codigoDisciplina,codigoPeriodo);
 }
+
+void removerDisciplinaAluno(Alunos **listaAlunos,int codigoAluno, int codigoDisciplina){
+    Alunos *auxAluno = buscarAlunoEndereco(*listaAlunos,codigoAluno);
+    removerDiscPer(&(auxAluno->lista),codigoDisciplina);
+}
