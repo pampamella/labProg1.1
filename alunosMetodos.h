@@ -86,15 +86,20 @@ void printAlunos(Alunos **lista){
     int i = 1;
     Alunos *aux = *lista;
     while(aux){
-        printf("Aluno: %d \n",i);
-        printf("Codigo: %d\n",aux->codigo);
-        printf("CPF: %s \n",aux->cpf);
-        printf("Nome: %s \n",aux->nome);
+        printf("Aluno: %d | Codigo: %d | CPF: %s | Nome: %s \n",i, aux->codigo, aux->cpf, aux->nome);
         printDiscPer(&(aux->lista));
         printf("\n");
         i++;
         aux = (aux)->proximo;
     }
+    free(aux);
+}
+
+void printAluno(Alunos **aluno){
+    int i = 1;
+    Alunos *aux = *aluno;
+    printf("Aluno: %d | Codigo: %d | CPF: %s | Nome: %s \n",i, aux->codigo, aux->cpf, aux->nome);
+    printDiscPer(&(aux->lista));
     free(aux);
 }
 

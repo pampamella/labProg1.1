@@ -86,9 +86,7 @@ void printDiscPer(listaDiscPer **lista){
     int i = 1;
     listaDiscPer *aux = *lista;
     while(aux){
-        printf("Disciplina: %d \n",i);
-        printf("Codigo da Disciplina: %d\n",aux->codigoDisciplina);
-        printf("Codigo do Periodo: %d \n",aux->codigoPeriodo);
+        printf("Disciplina: %d | Codigo da Disciplina: %d | Codigo do Periodo: %d \n",i,aux->codigoDisciplina, aux->codigoPeriodo );
         i++;
         aux = (aux)->proximo;
     }

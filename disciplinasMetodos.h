@@ -101,14 +101,16 @@ void printDisciplinas(Disciplinas **lista){
     int i = 1;
     Disciplinas *aux = *lista;
     while(aux){
-        printf("No: %d \n",i);
-        printf("Codigo: %d\n",aux->codigo);
-        printf("Nome: %s \n",aux->nome);
-        printf("Professor: %s \n",aux->professor);
-        printf("Creditos: %d \n",aux->creditos);
+        printf("No: %d | Codigo: %d | Nome: %s | Professor: %s | Creditos: %d \n",i,aux->codigo, aux->nome, aux->professor, aux->creditos);
         i++;
         aux = (aux)->proximo;
     }
     free(aux);
 }
 
+void printDisciplina(Disciplinas **disciplina){
+    int i = 1;
+    Disciplinas *aux = *disciplina;
+    printf("No: %d | Codigo: %d | Nome: %s | Professor: %s | Creditos: %d \n",i,aux->codigo, aux->nome, aux->professor, aux->creditos);
+    free(aux);
+}

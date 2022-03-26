@@ -5,7 +5,7 @@
 
 
 void main(){
-    int opcaoMenuInicial=1, opcaoAluno=1, opcaoPeriodo=1, opcaoDisciplina=1;
+    int opcaoMenuInicial=1, opcaoAluno=1, opcaoPeriodo=1, opcaoDisciplina=1, opcaoDiscPer=1;
     int codigoAluno, codigoPeriodo, codigoDisciplina, creditos;
     char nomeAluno[50], nomeDisciplina[50], professor[50], cpf[11], periodo[10];
     Periodos *resultadoPeriodo,*periodosSalvos;
@@ -14,6 +14,7 @@ void main(){
     disciplinasSalvas = lerDisciplinas();
     Alunos *resultadoAluno, *alunosSalvos;
     alunosSalvos=lerAlunos();
+    listaDiscPer *listaDisciplinaPeriodo=NULL;
 
     while(opcaoMenuInicial){
         opcoesMenuInicial();
@@ -32,27 +33,55 @@ void main(){
                     printf("\nInsira o cpf do aluno (ex: 04099439089): ");
                     scanf("%s", cpf);
                     printf("\nDADOS INSERIDOS %d %s %s", codigoAluno, nomeAluno, cpf);
-                    //invocar adicionar aluno aqui
+                    printf("\n----Disciplinas cadastradas no sistema----\n");
+                    printDisciplinas(&disciplinasSalvas);
+                    printf("\nInsira o codigo de uma disciplina do novo aluno: ");
+                    scanf("%d", &codigoDisciplina);
+                    printf("\n----Periodos cadastrados no sistema----\n");
+                    printPeriodos(&periodosSalvos);
+                    printf("\nInsira o codigo do periodo para esta disciplina: ");
+                    scanf("%d", &codigoPeriodo);
+                    inserirDiscPer(&listaDisciplinaPeriodo,codigoDisciplina, codigoPeriodo);
+                    while(opcaoDiscPer){
+                        printf("\nDeseja cadastrar mais disciplinas para esse aluno? \n1 - Sim\n0 - Nao\n\nOpcao: ");
+                        scanf("%d", &opcaoDiscPer);
+                        if(opcaoDiscPer){
+                            printf("\nInsira o codigo de uma disciplina do novo aluno: ");
+                            scanf("%d", &codigoDisciplina);
+                            printf("\nInsira o codigo do periodo para esta disciplina: ");
+                            scanf("%d", &codigoPeriodo);
+                            inserirDiscPer(&listaDisciplinaPeriodo,codigoDisciplina, codigoPeriodo);
+                        }
+                    }
+                    inserirAluno(&alunosSalvos, codigoAluno, nomeAluno, cpf, listaDisciplinaPeriodo);
+                    escreverAlunos(&alunosSalvos);
+                    opcaoDiscPer=1;
                 }
                 else if(opcaoAluno==2){
                     printf("\n----Alunos matriculados no sistema----\n");
-                    //invocar lista de alunos aqui
+                    printAlunos(&alunosSalvos);
 
                 }
                 else if(opcaoAluno==3){
                     printf("\n----Busca de aluno----\n");
                     printf("\nInsira o codigo de matricula do aluno que deseja buscar: ");
                     scanf("%d", &codigoAluno);
-                    //invocar busca de aluno aqui;
+                    resultadoAluno=buscarAlunoEndereco(alunosSalvos, codigoAluno);
+                    if(resultadoAluno){
+                        printAluno(&resultadoAluno);
+                    }
+                    else{
+                        printf("\nAluno nao encontrado!");
+                    }
                 }
                 else if(opcaoAluno==4){
                     printf("\n ----Busca de alunos por disciplina e periodo----\n");
                     printf("\nAs disciplinas disponiveis sao: \n");
-                    //exibir lista de disciplinas
+                    printDisciplinas(&disciplinasSalvas);
                     printf("\nInsira o codigo da disciplina que deseja filtrar: ");
                     scanf("%d", &codigoDisciplina);
                     printf("\nOs periodos disponiveis sao: \n");
-                    //exibir lista de periodos
+                    printPeriodos(&periodosSalvos);
                     printf("\nInsira o codigo do periodo que deseja filtrar: ");
                     scanf("%d", &codigoPeriodo);
                     printf("\n----Alunos cadastrados na disciplina e periodo escolhidos----\n");
@@ -66,13 +95,13 @@ void main(){
                 else if(opcaoAluno==6){
                     printf("\n----Remocao de aluno----\n");
                     printf("\n----Alunos matriculados no sistema atualmente----\n");
-                    //invocar lista de alunos aqui
+                    printAlunos(&alunosSalvos);
                     printf("\nInsira o codigo de matricula do aluno que deseja remover: ");
                     scanf("%d", &codigoAluno);
-                    //invocar remocao de aluno
+                    removerAluno(&alunosSalvos, codigoAluno);
                     printf("\nAluno %d removido!", codigoAluno);
                     printf("\n----Alunos matriculados no sistema atualmente (atualizado) ----\n");
-                    //invocar nova lista de alunos aqui
+                    printAlunos(&alunosSalvos);
 
                 }
                 else if(opcaoAluno==0){
@@ -90,11 +119,12 @@ void main(){
                 scanf("%d", &opcaoDisciplina);
                 if(opcaoDisciplina==1){
                     printf("\n----Cadastro nova disciplina----\n");
-                    printf("\nInsira o codigo da nova disciplina: (ex: 1234):  ");
+                    printf("\nInsira o codigo da nova disciplina (ex: 1234):  ");
                     scanf("%d", &codigoDisciplina);
                     fflush(stdin);
                     printf("\nInsira o nome da disciplina: ");
                     scanf("%[^'\n']s", nomeDisciplina);
+                    fflush(stdin);
                     printf("\nInsira o nome do professor: ");
                     scanf("%[^'\n']s", professor);
                     printf("\nInsira a quantidade de creditos (ex: 30): ");
@@ -114,7 +144,7 @@ void main(){
                     scanf("%d", &codigoDisciplina);
                     resultadoDisciplina=buscarDiscEndereco(disciplinasSalvas, codigoDisciplina);
                     if(resultadoDisciplina){
-                        printPeriodos(&resultadoDisciplina);
+                        printDisciplina(&resultadoDisciplina);
                     }
                     else{
                         printf("\nDisciplina nao encontrada!");
@@ -123,11 +153,11 @@ void main(){
                 else if(opcaoDisciplina==4){
                     printf("\n ----Busca de disciplinas por aluno e periodo----\n");
                     printf("\nOs alunos matriculados sao: \n");
-                    //exibir lista de alunos
+                    printAlunos(&alunosSalvos);
                     printf("\nInsira o codigo do aluno que deseja fitrar: ");
                     scanf("%d", &codigoAluno);
                     printf("\nOs periodos disponiveis sao: \n");
-                    //exibir lista de periodos
+                    printPeriodos(&periodosSalvos);
                     printf("\nInsira o codigo do periodo que deseja filtrar: ");
                     scanf("%d", &codigoPeriodo);
                     printf("\n----Disciplinas cadastrados por aluno e periodo escolhidos----\n");
@@ -152,7 +182,6 @@ void main(){
                 else {
                     printf("\n---Insira um dos valores das opcoes!---\n");
                 }
-                disciplinasSalvas = lerDisciplinas();
             }
             opcaoDisciplina=1;
         }
@@ -182,7 +211,7 @@ void main(){
                     scanf("%d", &codigoPeriodo);
                     resultadoPeriodo=buscarPeriodoEndereco(periodosSalvos, codigoPeriodo);
                     if(resultadoPeriodo){
-                        printPeriodos(&resultadoPeriodo);
+                        printPeriodo(&resultadoPeriodo);
                     }
                     else{
                         printf("\nPeriodo nao encontrado!");
@@ -208,7 +237,6 @@ void main(){
                 else {
                     printf("\n---Insira um dos valores das opcoes!---\n");
                 }
-                periodosSalvos = lerPeriodos();
             }
             opcaoPeriodo=1;
         }
