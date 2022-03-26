@@ -13,3 +13,28 @@ void disciplinasPorPeriodo(listaDiscPer *inicio, int codigoPeriodo, Disciplinas 
         inicio=inicio-> proximo;
     }
 }
+
+void alunosPorPeriodo(Alunos **inicioAlunos,int codigoPeriodo,Periodos **listaPeriodos){
+    Periodos *auxPeriodos = *listaPeriodos;
+    Alunos *auxAlunos = *inicioAlunos;
+    char nome[50];
+    while(auxPeriodos){
+        if((auxPeriodos)->codigo==codigoPeriodo){
+            strcpy(nome,(auxPeriodos)->descricao);
+            break;
+        }
+        auxPeriodos = (auxPeriodos)->proximo;
+    }
+    printf("Alunos no periodo %s:\n",nome);
+    while(auxAlunos){
+        listaDiscPer *auxDiscPer = (*inicioAlunos)->lista;
+        while(auxDiscPer){
+            if(auxDiscPer->codigoPeriodo == codigoPeriodo){
+                printf("%s\n",(*inicioAlunos)->nome);
+                break;
+            }
+            auxDiscPer=auxDiscPer->proximo;
+        }
+        auxAlunos = (auxAlunos)->proximo;
+    }
+}
