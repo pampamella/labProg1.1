@@ -123,3 +123,8 @@ Alunos *lerAlunos(){
     fclose(arquivo);
     return listaAlunos;
 }
+
+void inserirDisciplinaAluno(Alunos **listaAlunos,int codigoAluno, int codigoDisciplina, int codigoPeriodo){
+    Alunos *auxAluno = buscarAlunoEndereco(*listaAlunos,codigoAluno);
+    inserirDiscPer(&(auxAluno->lista),codigoDisciplina,codigoPeriodo);
+}
