@@ -21,7 +21,7 @@ typedef struct listaDisciplinaPeriodo{
 typedef struct alunos{
     int codigo;
     char nome[50];
-    char cpf[11];
+    char cpf[12];
     struct listaDisciplinaPeriodo *lista;
     struct alunos *anterior;
     struct alunos *proximo;

@@ -65,3 +65,32 @@ void escreverDiscPer(listaDiscPer lista, FILE *arquivo){
         aux = aux->proximo;
     }        
 }
+
+listaDiscPer *lerDiscPer(FILE *arquivo){
+    int codigoDisciplina;
+    int codigoPeriodo;
+    char identificador = '-';
+    listaDiscPer *lista = NULL;
+    while(identificador != '*'){
+        fscanf(arquivo,"%d\n%d\n",&codigoDisciplina,&codigoPeriodo);
+        int aux = codigoPeriodo;
+        fscanf(arquivo,"%s\n",&identificador);
+        if(identificador != '*'){
+            inserirDiscPer(&lista,codigoDisciplina,aux);
+        }
+    }
+    return lista;
+}
+
+void printDiscPer(listaDiscPer **lista){
+    int i = 1;
+    listaDiscPer *aux = *lista;
+    while(aux){
+        printf("Disciplina: %d \n",i);
+        printf("Codigo da Disciplina: %d\n",aux->codigoDisciplina);
+        printf("Codigo do Periodo: %d \n",aux->codigoPeriodo);
+        i++;
+        aux = (aux)->proximo;
+    }
+    free(aux);
+}
