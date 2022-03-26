@@ -74,3 +74,34 @@ void alunosPorDisciplinaPeriodo(Alunos **inicioAlunos,int codigoPeriodo,int codi
         auxAlunos = (auxAlunos)->proximo;
     }
 }
+
+void disciplinasPorAlunoPeriodo(Alunos **inicioAlunos,int codigoPeriodo,int codigoAluno,Periodos **listaPeriodos, Disciplinas **inicioDisciplinas){
+    Periodos *auxPeriodos = *listaPeriodos;
+    Alunos *auxAlunos = *inicioAlunos;
+    Disciplinas *auxDisciplinas = *inicioDisciplinas;
+    char nomePeriodo[50];
+    char nomeDisciplina[50];
+    char nomeAluno[50];
+    while(auxPeriodos){
+        if((auxPeriodos)->codigo==codigoPeriodo){
+            strcpy(nomePeriodo,(auxPeriodos)->descricao);
+            break;
+        }
+        auxPeriodos = (auxPeriodos)->proximo;
+    }
+    while(auxAlunos){
+        if((auxAlunos)->codigo==codigoAluno){
+            strcpy(nomeAluno,(auxAlunos)->nome);
+            break;
+        }
+        auxAlunos = (auxAlunos)->proximo;
+    }
+    printf("Disciplinas do aluno %s no periodo %s:\n",nomeAluno,nomePeriodo);
+    listaDiscPer *auxDiscPer = (auxAlunos)->lista;
+    while(auxDiscPer){
+        if(auxDiscPer->codigoPeriodo == codigoPeriodo){
+            printf("%s\n",(buscarDiscEndereco(*inicioDisciplinas,auxDiscPer->codigoDisciplina))->nome);
+        }
+        auxDiscPer=auxDiscPer->proximo;
+        }
+}
