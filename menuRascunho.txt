@@ -1,0 +1,41 @@
+O que voce deseja? \n
+
+1 - Interagir com a entidade Aluno\n
+2 - Interagir com a entidade Disciplina\n
+3 - Interagir com a entidade Periodo\n
+0 - Sair do sistema\n
+
+1 - Matricular novo aluno \n
+2 - Ver a lista de alunos matriculados\n
+3 - Buscar aluno por codigo de matricula\n
+4 - Buscar Alunos por Disciplina e Periodo\n
+5 - Adicionar disciplina em um aluno\n
+6 - Remover aluno\n
+0 - Voltar para menu anterior\n
+
+1 - Cadastrar nova disciplina\n
+2 - Ver a lista de disciplinas cadastradas\n
+3 - Buscar disciplina por codigo\n
+4 - Buscar Disciplinas por Aluno e Periodo\n
+5 - Remover disciplina\n
+0 - Voltar para menu anterior\n
+
+1 - Cadastrar novo periodo\n
+2 - Ver a lista de periodos cadastrados\n
+3 - Buscar periodo por codigo\n
+4 - Remover periodo\n
+0 - Voltar para menu anterior\n
+
+\nInsira o codigo do novo aluno (ex: 12345):
+\nInsira o nome do aluno: 
+\nInsira o cpf do aluno (ex: 04099439089):
+
+
+\nInsira o codigo da nova disciplina (ex: 1234):
+\nInsira o nome da disciplina: 
+\nInsira o nome do professor: 
+\nInsira a quantidade de creditos (ex: 30):
+
+
+\nInsira o novo periodo (ex: segundo periodo de 2018: 2018.2):
+\nInsira o codigo do periodo (ex: se 2018.2, insere 20182):
