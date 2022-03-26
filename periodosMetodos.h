@@ -100,8 +100,6 @@ void printPeriodos(Periodos **lista){
 }
 
 void printPeriodo(Periodos **periodo){
-    int i = 1;
     Periodos *aux = *periodo;
-    printf("No: %d | Codigo: %d | Descricao: %s \n",i,aux->codigo,aux->descricao);  
-    free(aux);
+    printf(" Codigo: %d | Descricao: %s \n",aux->codigo,aux->descricao);  
 }

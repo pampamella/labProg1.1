@@ -96,11 +96,9 @@ void printAlunos(Alunos **lista){
 }
 
 void printAluno(Alunos **aluno){
-    int i = 1;
     Alunos *aux = *aluno;
-    printf("Aluno: %d | Codigo: %d | CPF: %s | Nome: %s \n",i, aux->codigo, aux->cpf, aux->nome);
+    printf("Codigo: %d | CPF: %s | Nome: %s \n", aux->codigo, aux->cpf, aux->nome);
     printDiscPer(&(aux->lista));
-    free(aux);
 }
 
 Alunos *lerAlunos(){

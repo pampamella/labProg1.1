@@ -85,14 +85,45 @@ void main(){
                     printf("\nInsira o codigo do periodo que deseja filtrar: ");
                     scanf("%d", &codigoPeriodo);
                     printf("\n----Alunos cadastrados na disciplina e periodo escolhidos----\n");
-                    //invocar resultado da busca de alunos por disciplina e periodo
+                    alunosPorDisciplinaPeriodo(&alunosSalvos, codigoPeriodo, codigoDisciplina, &periodosSalvos, &disciplinasSalvas);
                 }
                 else if(opcaoAluno==5){
-                    printf("\n aaaaaaa 5\n");
-                    //dps faço esse
-
+                    printf("\n ----Inserir novo par disciplina-periodo em um aluno----\n");
+                    printf("\nAlunos disponiveis sao: \n");
+                    printAlunos(&alunosSalvos);
+                    printf("\nInsira o codigo do aluno que deseja: \n");
+                    scanf("%d", &codigoAluno);
+                    printf("\nAs disciplinas disponiveis sao: \n");
+                    printDisciplinas(&disciplinasSalvas);
+                    printf("\nInsira o codigo da disciplina que deseja adicionar: ");
+                    scanf("%d", &codigoDisciplina);
+                    printf("\nOs periodos disponiveis sao: \n");
+                    printPeriodos(&periodosSalvos);
+                    printf("\nInsira o codigo do periodo em que deseja adicionar essa disciplina: ");
+                    scanf("%d", &codigoPeriodo);
+                    inserirDisciplinaAluno(&alunosSalvos, codigoAluno, codigoDisciplina, codigoPeriodo);
+                    printf("\nAluno %d atualizado: \n", codigoAluno);
+                    resultadoAluno=buscarAlunoEndereco(alunosSalvos, codigoAluno);
+                    printAluno(&resultadoAluno);
                 }
                 else if(opcaoAluno==6){
+                    printf("\n ----Remover uma disciplina de um aluno----\n");
+                    printf("\nAlunos disponiveis sao: \n");
+                    printAlunos(&alunosSalvos);
+                    printf("\nInsira o codigo do aluno que deseja: ");
+                    scanf("%d", &codigoAluno);
+                    resultadoAluno=buscarAlunoEndereco(alunosSalvos, codigoAluno);
+                    printAluno(&resultadoAluno);
+                    printf("\nInsira o codigo da disciplina que deseja remover: ");
+                    scanf("%d", &codigoDisciplina);
+                    printf("AAAAAAAAAAAAAAAA");
+                    printAlunos(&alunosSalvos);
+                    removerDisciplinaAluno(&alunosSalvos, codigoAluno, codigoDisciplina);
+                    printf("\nAluno %d atualizado: \n", codigoAluno);
+                    resultadoAluno=buscarAlunoEndereco(alunosSalvos, codigoAluno);
+                    printAluno(&resultadoAluno);
+                }
+                else if(opcaoAluno==7){
                     printf("\n----Remocao de aluno----\n");
                     printf("\n----Alunos matriculados no sistema atualmente----\n");
                     printAlunos(&alunosSalvos);
@@ -161,7 +192,7 @@ void main(){
                     printf("\nInsira o codigo do periodo que deseja filtrar: ");
                     scanf("%d", &codigoPeriodo);
                     printf("\n----Disciplinas cadastrados por aluno e periodo escolhidos----\n");
-                    //invocar resultado da busca de alunos por disciplina e periodo
+                    disciplinasPorAlunoPeriodo(&alunosSalvos, codigoPeriodo, codigoAluno, &periodosSalvos, &disciplinasSalvas);
                 }
                 else if(opcaoDisciplina==5){
                     printf("\n----Remocao de disciplina----\n");
@@ -249,32 +280,6 @@ void main(){
         }
 
     }
-    
-  
-    // Disciplinas *disciplinas = NULL;
-    // Disciplinas *disciplinasSalvas;
-    // inserirDisciplina(&disciplinas,10000,"matdisc","veloso",20);
-    // inserirDisciplina(&disciplinas,10001,"sistdig","rotava",41);
-    // inserirDisciplina(&disciplinas,10009,"fentrans","gabriel",17);
-    // escreverDisciplinas(&disciplinas);
-    // disciplinasSalvas = lerDisciplinas();
-    // printf("\n---------Lista de Disciplinas -----------\n");
-    // printDisciplinas(&disciplinasSalvas);
-    // Periodos *periodos=NULL;
-    // inserirPeriodo(&periodos, 1, "2018.2");
-    // inserirPeriodo(&periodos, 2, "2019.1");
-    // inserirPeriodo(&periodos, 3, "2019.2");
-    // escreverPeriodos(&periodos);
-    // Periodos *periodosSalvos;
-    // periodosSalvos = lerPeriodos();
-    // printf("\n---------Lista de Periodos -----------\n");
-    // printPeriodos(&periodosSalvos);
-    // listaDiscPer *disciplinasPeriodos = NULL;
-    // inserirDiscPer(&disciplinasPeriodos, 10000, 3);
-    // inserirDiscPer(&disciplinasPeriodos, 10009, 2);
-    // inserirDiscPer(&disciplinasPeriodos, 10001, 2);
-    // printf("\n---------Filtro por Periodo -----------\n");
-    // disciplinasPorPeriodo(disciplinasPeriodos, 2, &disciplinasSalvas);
 
 }
 

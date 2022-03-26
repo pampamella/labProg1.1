@@ -109,8 +109,6 @@ void printDisciplinas(Disciplinas **lista){
 }
 
 void printDisciplina(Disciplinas **disciplina){
-    int i = 1;
     Disciplinas *aux = *disciplina;
-    printf("No: %d | Codigo: %d | Nome: %s | Professor: %s | Creditos: %d \n",i,aux->codigo, aux->nome, aux->professor, aux->creditos);
-    free(aux);
+    printf("Codigo: %d | Nome: %s | Professor: %s | Creditos: %d \n",aux->codigo, aux->nome, aux->professor, aux->creditos);
 }
