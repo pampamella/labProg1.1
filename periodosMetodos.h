@@ -92,11 +92,14 @@ void printPeriodos(Periodos **lista){
     int i = 1;
     Periodos *aux = *lista;
     while(aux){
-        printf("No: %d \n",i);
-        printf("Codigo: %d\n",aux->codigo);
-        printf("Descricao: %s \n",aux->descricao);
+        printf("No: %d | Codigo: %d | Descricao: %s \n",i,aux->codigo,aux->descricao);
         i++;
         aux = (aux)->proximo;
     }
     free(aux);
+}
+
+void printPeriodo(Periodos **periodo){
+    Periodos *aux = *periodo;
+    printf(" Codigo: %d | Descricao: %s \n",aux->codigo,aux->descricao);  
 }
