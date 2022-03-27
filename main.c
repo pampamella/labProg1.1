@@ -32,7 +32,6 @@ void main(){
                     scanf("%[^'\n']s", nomeAluno);
                     printf("\nInsira o cpf do aluno (ex: 04099439089): ");
                     scanf("%s", cpf);
-                    printf("\nDADOS INSERIDOS %d %s %s", codigoAluno, nomeAluno, cpf);
                     printf("\n----Disciplinas cadastradas no sistema----\n");
                     printDisciplinas(&disciplinasSalvas);
                     printf("\nInsira o codigo de uma disciplina do novo aluno: ");
@@ -64,7 +63,7 @@ void main(){
                 }
                 else if(opcaoAluno==3){
                     printf("\n----Busca de aluno----\n");
-                    printf("\nInsira o codigo de matricula do aluno que deseja buscar: ");
+                    printf("\nInsira o codigo do aluno que deseja buscar: ");
                     scanf("%d", &codigoAluno);
                     resultadoAluno=buscarAlunoEndereco(alunosSalvos, codigoAluno);
                     if(resultadoAluno){
@@ -84,14 +83,13 @@ void main(){
                     printPeriodos(&periodosSalvos);
                     printf("\nInsira o codigo do periodo que deseja filtrar: ");
                     scanf("%d", &codigoPeriodo);
-                    printf("\n----Alunos cadastrados na disciplina e periodo escolhidos----\n");
                     alunosPorDisciplinaPeriodo(&alunosSalvos, codigoPeriodo, codigoDisciplina, &periodosSalvos, &disciplinasSalvas);
                 }
                 else if(opcaoAluno==5){
                     printf("\n ----Inserir novo par disciplina-periodo em um aluno----\n");
                     printf("\nAlunos disponiveis sao: \n");
                     printAlunos(&alunosSalvos);
-                    printf("\nInsira o codigo do aluno que deseja: \n");
+                    printf("\nInsira o codigo do aluno que deseja: ");
                     scanf("%d", &codigoAluno);
                     printf("\nAs disciplinas disponiveis sao: \n");
                     printDisciplinas(&disciplinasSalvas);
@@ -102,6 +100,7 @@ void main(){
                     printf("\nInsira o codigo do periodo em que deseja adicionar essa disciplina: ");
                     scanf("%d", &codigoPeriodo);
                     inserirDisciplinaAluno(&alunosSalvos, codigoAluno, codigoDisciplina, codigoPeriodo);
+                    escreverAlunos(&alunosSalvos);
                     printf("\nAluno %d atualizado: \n", codigoAluno);
                     resultadoAluno=buscarAlunoEndereco(alunosSalvos, codigoAluno);
                     printAluno(&resultadoAluno);
@@ -116,9 +115,9 @@ void main(){
                     printAluno(&resultadoAluno);
                     printf("\nInsira o codigo da disciplina que deseja remover: ");
                     scanf("%d", &codigoDisciplina);
-                    printf("AAAAAAAAAAAAAAAA");
                     printAlunos(&alunosSalvos);
                     removerDisciplinaAluno(&alunosSalvos, codigoAluno, codigoDisciplina);
+                    escreverAlunos(&alunosSalvos);
                     printf("\nAluno %d atualizado: \n", codigoAluno);
                     resultadoAluno=buscarAlunoEndereco(alunosSalvos, codigoAluno);
                     printAluno(&resultadoAluno);
@@ -130,6 +129,7 @@ void main(){
                     printf("\nInsira o codigo de matricula do aluno que deseja remover: ");
                     scanf("%d", &codigoAluno);
                     removerAluno(&alunosSalvos, codigoAluno);
+                    escreverAlunos(&alunosSalvos);
                     printf("\nAluno %d removido!", codigoAluno);
                     printf("\n----Alunos matriculados no sistema atualmente (atualizado) ----\n");
                     printAlunos(&alunosSalvos);
@@ -160,7 +160,6 @@ void main(){
                     scanf("%[^'\n']s", professor);
                     printf("\nInsira a quantidade de creditos (ex: 30): ");
                     scanf("%d", &creditos);
-                    printf("\nDADOS INSERIDOS %d %s %s %d", codigoDisciplina, nomeDisciplina, professor, creditos);
                     inserirDisciplina(&disciplinasSalvas, codigoDisciplina, nomeDisciplina, professor, creditos);
                     escreverDisciplinas(&disciplinasSalvas);
                 }
@@ -191,7 +190,6 @@ void main(){
                     printPeriodos(&periodosSalvos);
                     printf("\nInsira o codigo do periodo que deseja filtrar: ");
                     scanf("%d", &codigoPeriodo);
-                    printf("\n----Disciplinas cadastrados por aluno e periodo escolhidos----\n");
                     disciplinasPorAlunoPeriodo(&alunosSalvos, codigoPeriodo, codigoAluno, &periodosSalvos, &disciplinasSalvas);
                 }
                 else if(opcaoDisciplina==5){
@@ -225,9 +223,8 @@ void main(){
                     printf("\n\nInsira o novo periodo (ex: segundo periodo de 2018: 2018.2): ");
                     scanf("%s", periodo);
                     fflush(stdin);
-                    printf("\nInsira o codigo do periodo (ex: se 2018.2, insere 20182):");
+                    printf("\nInsira o codigo do periodo (ex: se 2018.2, insere 20182): ");
                     scanf("%d", &codigoPeriodo);
-                    printf("\nDADOS INSERIDOS  %s %d", periodo, codigoPeriodo);
                     inserirPeriodo(&periodosSalvos, codigoPeriodo, periodo);
                     escreverPeriodos(&periodosSalvos);
                 }
