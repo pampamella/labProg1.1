@@ -16,7 +16,7 @@ void disciplinasPorPeriodo(listaDiscPer *inicio, int codigoPeriodo, Disciplinas 
 
 void alunosPorPeriodo(Alunos **inicioAlunos,int codigoPeriodo,Periodos **listaPeriodos){
     Alunos *auxAlunos = *inicioAlunos;
-    printf("Alunos no periodo %s:\n",(buscarPeriodoEndereco(*listaPeriodos,codigoPeriodo))->descricao);
+    printf("------ Alunos no periodo %s ------\n",(buscarPeriodoEndereco(*listaPeriodos,codigoPeriodo))->descricao);
     while(auxAlunos){
         listaDiscPer *auxDiscPer = (auxAlunos)->lista;
         while(auxDiscPer){
@@ -32,7 +32,7 @@ void alunosPorPeriodo(Alunos **inicioAlunos,int codigoPeriodo,Periodos **listaPe
 
 void alunosPorDisciplinaPeriodo(Alunos **inicioAlunos,int codigoPeriodo,int codigoDisciplina,Periodos **listaPeriodos, Disciplinas **inicioDisciplinas){
     Alunos *auxAlunos = *inicioAlunos;
-    printf("Alunos na disciplina %s no periodo %s:\n",(buscarDiscEndereco(*inicioDisciplinas,codigoDisciplina))->nome,(buscarPeriodoEndereco(*listaPeriodos,codigoPeriodo))->descricao);
+    printf("------ Alunos na disciplina %s no periodo %s ------\n",(buscarDiscEndereco(*inicioDisciplinas,codigoDisciplina))->nome,(buscarPeriodoEndereco(*listaPeriodos,codigoPeriodo))->descricao);
     while(auxAlunos){
         listaDiscPer *auxDiscPer = (auxAlunos)->lista;
         while(auxDiscPer){
@@ -48,7 +48,7 @@ void alunosPorDisciplinaPeriodo(Alunos **inicioAlunos,int codigoPeriodo,int codi
 
 void disciplinasPorAlunoPeriodo(Alunos **inicioAlunos,int codigoPeriodo,int codigoAluno,Periodos **listaPeriodos, Disciplinas **inicioDisciplinas){
     Alunos *auxAlunos = buscarAlunoEndereco(*inicioAlunos,codigoAluno);
-    printf("Disciplinas do aluno %s no periodo %s:\n",(buscarAlunoEndereco(*inicioAlunos,codigoAluno))->nome,(buscarPeriodoEndereco(*listaPeriodos,codigoPeriodo))->descricao);
+    printf("------ Disciplinas do aluno %s no periodo %s ------\n",(buscarAlunoEndereco(*inicioAlunos,codigoAluno))->nome,(buscarPeriodoEndereco(*listaPeriodos,codigoPeriodo))->descricao);
     listaDiscPer *auxDiscPer = (auxAlunos)->lista;
     while(auxDiscPer){
         if(auxDiscPer->codigoPeriodo == codigoPeriodo){
