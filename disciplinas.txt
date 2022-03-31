@@ -1,0 +1,20 @@
+1003
+Fenomenos de Transporte
+Cel Gabriel
+17
+*
+1001
+Sistemas Digitais
+Rotava
+41
+*
+1002
+Matematica Discreta
+Veloso
+20
+*
+1000
+Laboratorio de Progamacao
+TC Duarte
+45
+*
