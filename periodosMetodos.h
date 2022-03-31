@@ -89,11 +89,9 @@ int escreverPeriodos(Periodos **lista){
 }
 
 void printPeriodos(Periodos **lista){
-    int i = 1;
     Periodos *aux = *lista;
     while(aux){
-        printf("No: %d | Codigo: %d | Descricao: %s \n",i,aux->codigo,aux->descricao);
-        i++;
+        printf("Codigo: %d | Descricao: %s \n",aux->codigo,aux->descricao);
         aux = (aux)->proximo;
     }
     free(aux);
@@ -101,5 +99,5 @@ void printPeriodos(Periodos **lista){
 
 void printPeriodo(Periodos **periodo){
     Periodos *aux = *periodo;
-    printf(" Codigo: %d | Descricao: %s \n",aux->codigo,aux->descricao);  
+    printf("Codigo: %d | Descricao: %s \n",aux->codigo,aux->descricao);  
 }

@@ -1,20 +1,20 @@
 1003
-FenTrans
-Gabriel
+Fenomenos de Transporte
+Cel Gabriel
 17
 *
 1001
-SisDig
+Sistemas Digitais
 Rotava
 41
 *
 1002
-MatDisc
+Matematica Discreta
 Veloso
 20
 *
 1000
-LabProg
-TCDuarte
+Laboratorio de Progamacao
+TC Duarte
 45
 *
