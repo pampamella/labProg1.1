@@ -86,6 +86,14 @@ void main(){
                     alunosPorDisciplinaPeriodo(&alunosSalvos, codigoPeriodo, codigoDisciplina, &periodosSalvos, &disciplinasSalvas);
                 }
                 else if(opcaoAluno==5){
+                    printf("\n ----Busca de alunos por periodo----\n");
+                    printf("\nOs periodos disponiveis sao: \n");
+                    printPeriodos(&periodosSalvos);
+                    printf("\nInsira o codigo do periodo que deseja filtrar: ");
+                    scanf("%d", &codigoPeriodo);
+                    alunosPorPeriodo(&alunosSalvos, codigoPeriodo, &periodosSalvos);
+                }
+                else if(opcaoAluno==6){
                     printf("\n ----Inserir novo par disciplina-periodo em um aluno----\n");
                     printf("\nAlunos disponiveis sao: \n");
                     printAlunos(&alunosSalvos);
@@ -105,7 +113,7 @@ void main(){
                     resultadoAluno=buscarAlunoEndereco(alunosSalvos, codigoAluno);
                     printAluno(&resultadoAluno);
                 }
-                else if(opcaoAluno==6){
+                else if(opcaoAluno==7){
                     printf("\n ----Remover uma disciplina de um aluno----\n");
                     printf("\nAlunos disponiveis sao: \n");
                     printAlunos(&alunosSalvos);
@@ -122,7 +130,7 @@ void main(){
                     resultadoAluno=buscarAlunoEndereco(alunosSalvos, codigoAluno);
                     printAluno(&resultadoAluno);
                 }
-                else if(opcaoAluno==7){
+                else if(opcaoAluno==8){
                     printf("\n----Remocao de aluno----\n");
                     printf("\n----Alunos matriculados no sistema atualmente----\n");
                     printAlunos(&alunosSalvos);

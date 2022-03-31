@@ -83,11 +83,9 @@ listaDiscPer *lerDiscPer(FILE *arquivo){
 }
 
 void printDiscPer(listaDiscPer **lista){
-    int i = 1;
     listaDiscPer *aux = *lista;
     while(aux){
-        printf("Disciplina: %d | Codigo da Disciplina: %d | Codigo do Periodo: %d \n",i,aux->codigoDisciplina, aux->codigoPeriodo );
-        i++;
+        printf("Codigo da Disciplina: %d | Codigo do Periodo: %d \n",aux->codigoDisciplina, aux->codigoPeriodo );
         aux = (aux)->proximo;
     }
     free(aux);

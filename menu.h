@@ -8,7 +8,7 @@ void opcoesMenuInicial(){
 }
 
 void opcoesMenuAluno(){
-    printf("\n ------MENU ALUNO------ \n1 - Matricular novo aluno \n2 - Ver a lista de alunos matriculados\n3 - Buscar aluno por codigo de matricula\n4 - Buscar Alunos por Disciplina e Periodo\n5 - Adicionar disciplina em um aluno\n6 - Remover disciplina de um aluno\n7 - Remover aluno\n0 - Voltar para menu anterior\n\nOpcao:");
+    printf("\n ------MENU ALUNO------ \n1 - Matricular novo aluno \n2 - Ver a lista de alunos matriculados\n3 - Buscar aluno por codigo de matricula\n4 - Buscar Alunos por Disciplina e Periodo\n5 - Buscar Alunos por Periodo\n6 - Adicionar disciplina em um aluno\n7 - Remover disciplina de um aluno\n8 - Remover aluno\n0 - Voltar para menu anterior\n\nOpcao:");
 }
 
 void opcoesMenuDisciplina(){

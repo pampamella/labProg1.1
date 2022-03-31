@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 #include "periodosMetodos.h"
 
 Disciplinas *buscarDiscEndereco(Disciplinas *inicio, int valor){
@@ -63,8 +64,13 @@ Disciplinas *lerDisciplinas(){
     char identificador;
     Disciplinas *lista = NULL;
     while(!feof(arquivo)){
-        fscanf(arquivo,"%d\n %s\n %s\n %d\n %c\n",&codigo,&nome,&professor,&credito,&identificador);
+        fscanf(arquivo,"%d\n ",&codigo);
+        fgets (nome, 50, arquivo);
+        fgets (professor, 50, arquivo);
+        fscanf(arquivo,"%d\n %c\n",&credito,&identificador);
         if(strcmp(&identificador,"*")){};
+        nome[strcspn(nome, "\n")]=0;
+        professor[strcspn(professor, "\n")]=0;
         inserirDisciplina(&lista,codigo,nome,professor,credito);
     }
     fclose(arquivo);
@@ -98,11 +104,9 @@ int escreverDisciplinas(Disciplinas **lista){
 }
 
 void printDisciplinas(Disciplinas **lista){
-    int i = 1;
     Disciplinas *aux = *lista;
     while(aux){
-        printf("No: %d | Codigo: %d | Nome: %s | Professor: %s | Creditos: %d \n",i,aux->codigo, aux->nome, aux->professor, aux->creditos);
-        i++;
+        printf("Codigo: %d | Nome: %s | Professor: %s | Creditos: %d \n",aux->codigo, aux->nome, aux->professor, aux->creditos);
         aux = (aux)->proximo;
     }
     free(aux);

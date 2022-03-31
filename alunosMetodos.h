@@ -83,13 +83,11 @@ int escreverAlunos(Alunos **lista){
 }
 
 void printAlunos(Alunos **lista){
-    int i = 1;
     Alunos *aux = *lista;
     while(aux){
-        printf("Aluno: %d | Codigo: %d | CPF: %s | Nome: %s \n",i, aux->codigo, aux->cpf, aux->nome);
+        printf("Codigo: %d | CPF: %s | Nome: %s \n", aux->codigo, aux->cpf, aux->nome);
         printDiscPer(&(aux->lista));
         printf("\n");
-        i++;
         aux = (aux)->proximo;
     }
     free(aux);
@@ -112,10 +110,14 @@ Alunos *lerAlunos(){
     listaDiscPer *lista = NULL;
     Alunos *listaAlunos = NULL;
     while(!feof(arquivo)){
-        fscanf(arquivo,"%d\n%s\n%s\n%c\n", &codigo,&cpf,&nome,&identificador);
+        
+        fscanf(arquivo,"%d\n%s\n", &codigo,&cpf);
+        fgets (nome, 50, arquivo);
+        fscanf(arquivo, "%c\n",  &identificador);
         if(strcmp(&identificador,"~")){
             lista = lerDiscPer(arquivo);            
         };
+        nome[strcspn(nome, "\n")]=0;
         inserirAluno(&listaAlunos,codigo,nome,cpf,lista);
     }
     fclose(arquivo);
